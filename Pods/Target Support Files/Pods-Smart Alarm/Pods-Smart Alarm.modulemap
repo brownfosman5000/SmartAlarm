@@ -1,0 +1,6 @@
+framework module Pods_Smart_Alarm {
+  umbrella header "Pods-Smart Alarm-umbrella.h"
+
+  export *
+  module * { export * }
+}
