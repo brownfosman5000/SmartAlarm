@@ -80,7 +80,8 @@ class RandomProblemGenerator{
         for indexNumber in 0...mathSymbols.count-1{
             print("Last char of problem: \(String(describing: problem.last))")
             print("Math symbols amount:  \(mathSymbols[indexNumber])")
-            if String(describing: problem.last!) == String(mathSymbols[indexNumber]){
+            //The r is for the over may have a better way to do this
+            if String(describing: problem.last!) == String(mathSymbols[indexNumber]) && String(describing: problem.last!) != "r" {
                 print("There was a op symbol")
                 return true
             }

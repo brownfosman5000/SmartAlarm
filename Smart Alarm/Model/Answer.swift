@@ -44,10 +44,10 @@ class Answer{
     
     private func parseJsonAnswer(json: JSON){
         if let answer = json["result"].string{
-            self.answer = answer.replacingOccurrences(of: "over", with: "/")
             
-            delegate?.getAnswerProblem(mathAnswer: answer)
-            print("Answer: \(answer)")
+            //Confusing line but pretty much get rid of white space and replace overs with a slash
+            delegate?.getAnswerProblem(mathAnswer: answer.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "over", with: "/") )
+            print("Answer: \(answer.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "over", with: "/"))")
         }
         else{
             print("Error no answer")
