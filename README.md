@@ -1,4 +1,4 @@
-Welcome to Smart Alarm for IOS
+# Welcome to Smart Alarm for IOS
 
 Yes we wake you up on time for school, work, etc
 But even better!
