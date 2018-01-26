@@ -9,12 +9,38 @@
 
 import Foundation
 
-class MathProblem {
-    var question: String
-    var answer: String
+class MathProblem: AnswerProtocol {
+    var mathQuestion: String!
+    var mathAnswer: String!
     
-    init(mathQuestion: String, mathAnswer: String){
-        self.question = mathQuestion
-        self.answer = mathAnswer
+    
+    private let rng = RandomProblemGenerator()
+    
+    
+    
+    init(){
+        getProblem()
+        getAnswerForProblem()
+    }
+
+    
+    private func getProblem(){
+        rng.getRandomSimplificationProblem()
+        mathQuestion = rng.getProblem()
+        rng.clear()
+    }
+    
+    private func getAnswerForProblem(){
+        let a: Answer = Answer(problem: mathQuestion)
+        a.delegate = self
+    }
+    
+    
+    
+    //Protocol Function
+    func getAnswerProblem(mathAnswer: String) {
+        self.mathAnswer = mathAnswer
+        print("Answer: \(self.mathAnswer)")
+    
     }
 }

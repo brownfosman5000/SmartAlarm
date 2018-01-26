@@ -11,6 +11,8 @@
 		5709CF171FF0BF9300F21655 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5709CF161FF0BF9300F21655 /* ViewController.swift */; };
 		5709CF1A1FF0BF9300F21655 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5709CF181FF0BF9300F21655 /* Main.storyboard */; };
 		5709CF1F1FF0BF9300F21655 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5709CF1D1FF0BF9300F21655 /* LaunchScreen.storyboard */; };
+		57C1C513201AAE300079C2F1 /* RandomProblemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C1C512201AAE300079C2F1 /* RandomProblemGenerator.swift */; };
+		57C1C515201AD7800079C2F1 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C1C514201AD7800079C2F1 /* Answer.swift */; };
 		57C79A5C1FFF433200623316 /* MathBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C79A5B1FFF433200623316 /* MathBank.swift */; };
 		57CCE9131FFF383900046B11 /* MathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CCE9121FFF383900046B11 /* MathViewController.swift */; };
 		57CCE9151FFF3CAD00046B11 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57CCE9141FFF3CAD00046B11 /* Images.xcassets */; };
@@ -29,6 +31,8 @@
 		5709CF191FF0BF9300F21655 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5709CF1E1FF0BF9300F21655 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5717540D2008668D00D07EF9 /* bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridging-header.h"; sourceTree = "<group>"; };
+		57C1C512201AAE300079C2F1 /* RandomProblemGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomProblemGenerator.swift; sourceTree = "<group>"; };
+		57C1C514201AD7800079C2F1 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		57C79A5B1FFF433200623316 /* MathBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathBank.swift; sourceTree = "<group>"; };
 		57CCE90E1FFF36C600046B11 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Smart Alarm/Info.plist"; sourceTree = SOURCE_ROOT; };
 		57CCE9121FFF383900046B11 /* MathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathViewController.swift; sourceTree = "<group>"; };
@@ -85,9 +89,9 @@
 			children = (
 				5709CF281FF0C15000F21655 /* Model */,
 				5709CF2A1FF0C16200F21655 /* View */,
+				5709CF271FF0C14900F21655 /* Controller */,
 				57CCE9141FFF3CAD00046B11 /* Images.xcassets */,
 				57E3B2842003364E00143508 /* assets.xcassets */,
-				5709CF271FF0C14900F21655 /* Controller */,
 			);
 			path = "Smart Alarm";
 			sourceTree = "<group>";
@@ -107,6 +111,8 @@
 			children = (
 				57C79A5B1FFF433200623316 /* MathBank.swift */,
 				57E3B28A200498E100143508 /* MathProblem.swift */,
+				57C1C512201AAE300079C2F1 /* RandomProblemGenerator.swift */,
+				57C1C514201AD7800079C2F1 /* Answer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -233,11 +239,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Smart Alarm/Pods-Smart Alarm-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -286,6 +296,8 @@
 			files = (
 				57E3B28B200498E100143508 /* MathProblem.swift in Sources */,
 				5709CF171FF0BF9300F21655 /* ViewController.swift in Sources */,
+				57C1C513201AAE300079C2F1 /* RandomProblemGenerator.swift in Sources */,
+				57C1C515201AD7800079C2F1 /* Answer.swift in Sources */,
 				57CCE9131FFF383900046B11 /* MathViewController.swift in Sources */,
 				5709CF151FF0BF9300F21655 /* AppDelegate.swift in Sources */,
 				57C79A5C1FFF433200623316 /* MathBank.swift in Sources */,

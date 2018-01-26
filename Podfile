@@ -7,4 +7,6 @@ target 'Smart Alarm' do
 
   # Pods for Smart Alarm
   pod 'ProgressHUD'
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
 end

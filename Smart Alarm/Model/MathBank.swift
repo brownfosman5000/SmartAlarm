@@ -8,23 +8,27 @@
 
 import Foundation
 
-class MathBank{
+class MathBank {
+    let amountOfProblems = 5
     
     var list = [MathProblem]()
     
     init(){
-        list.append(MathProblem(mathQuestion: "2 + 32 - 5 + 12", mathAnswer: "42"))
-        list.append(MathProblem(mathQuestion: "4 + (6 - 4) + 2", mathAnswer: "8"))
-        list.append(MathProblem(mathQuestion: "3 + 21 - 5", mathAnswer: "19"))
-        list.append(MathProblem(mathQuestion: "25 + 1 + -13", mathAnswer: "13"))
+        for _ in 0...amountOfProblems-1{
+            
+            let problem = MathProblem()
+            
+            //Remove overs and replace with sign
+            problem.mathQuestion = problem.mathQuestion.replacingOccurrences(of: "over", with: "/")
+            
+
+            list.append(problem)
+            
+            
+        }
     }
     
-    
 
-    
-    
-    
-    
     
     
 }

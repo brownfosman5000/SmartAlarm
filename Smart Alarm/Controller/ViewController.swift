@@ -14,6 +14,7 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
 
     @IBOutlet weak var time: UIDatePicker!
     let center = UNUserNotificationCenter.current()
+    let rn: RandomProblemGenerator = RandomProblemGenerator()
     
     
     override func viewDidLoad() {
@@ -21,6 +22,10 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         requestNotifications()
         center.delegate = self
+        
+        
+        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +42,7 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
         //print(dateFormatter.string(from: time.date))
         
         configureNotificationInformation()
-
+        
     }
     
     @IBAction func cancel(_ sender: UIButton) {

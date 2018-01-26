@@ -25,7 +25,7 @@ class MathViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initializeKeyboard()
+        //initializeKeyboard()
         initializeUI()
         initializeAlarmSound()
         
@@ -68,13 +68,13 @@ class MathViewController: UIViewController{
     
     func initializeUI(){
         answer.text = ""
-        question.text = mathBank.list[questionNumber].question
+        question.text = mathBank.list[questionNumber].mathQuestion
     }
     
 
     //Checks answer
     func checkAnswer(){
-        if answer.text == mathBank.list[questionNumber].answer{
+        if answer.text == mathBank.list[questionNumber].mathAnswer{
             print("Correct Answer")
             ProgressHUD.showSuccess()
             nextQuestion()
