@@ -88,7 +88,7 @@ class MathViewController: UIViewController{
     //Progress to next question
     func nextQuestion(){
         print(questionNumber)
-        print(mathBank.list.count)
+        
         if questionNumber == mathBank.list.count-1{
             print("Alarm Stopped")
             alarmSound?.stop()

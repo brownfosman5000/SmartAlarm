@@ -7,6 +7,12 @@
 //  Copyright © 2018 Foster Brown. All rights reserved.
 //
 
+
+/*
+ A MathProblem object concists of a
+ question and its respective answer
+*/
+
 import Foundation
 
 class MathProblem: AnswerProtocol {
@@ -17,17 +23,15 @@ class MathProblem: AnswerProtocol {
     private let rng = RandomProblemGenerator()
     
     
-    
+    //Gets the problem and the answer
     init(){
         getProblem()
         getAnswerForProblem()
     }
 
-    
+    //Gets the problem
     private func getProblem(){
-        rng.getRandomSimplificationProblem()
         mathQuestion = rng.getProblem()
-        rng.clear()
     }
     
     private func getAnswerForProblem(){

@@ -6,66 +6,86 @@
 //  Copyright © 2018 Foster Brown. All rights reserved.
 //
 
+/*
+    Responsible for creating a problem involving the math symbols array(operations)
+*/
 import Foundation
 
 class RandomProblemGenerator{
-    //over means divide
-    private let mathSymbols = ["+","-","*","over"]//,"^"],"(",")"]
-    private let maxNumberOfCharsAndNumber = 9
-    private var numberOfChars: Int!
-    private var problem: String = "p"
     
-    func getProblem()->String{
-        print("PROBLEM: \(String(problem.dropFirst()))")
-        return String(problem.dropFirst())
-    }
-    func clear(){
-        problem = "p"
-    }
-    func getRandomSimplificationProblem(){
-        initializeNumberOfChars()
+    //over means divide
+    private let mathSymbols = [Character](arrayLiteral: "+","-","*")//,"/")//,"^"],"(",")"]
+    private let numCharsNeeded = 3
+    private let maxNumberOfCharsAndNumber = 9
+    
+
+    //Gets a random problem
+    func getProblem() -> String {
+        // Get number of chars
+        let numberOfChars = initializeNumberOfChars()
+        
+        // Get an initial number to populate problem and start loop
+        var problem: String = getRandomNumber()
+        
+        //Populate the problem
         for _ in 1...numberOfChars{
             
             //If a number add a symbol bruh
             if checkIfNumber(number: problem.last!){
-                problem += mathSymbols[Int(arc4random()) % mathSymbols.count]
+                //Pick one of the symbols from index 0 to 3
+                problem += String(mathSymbols[Int(arc4random()) % mathSymbols.count])
             }
-            //Add a random number to problem
+                //Add a random number to problem
             else{
                 problem += getRandomNumber()
             }
         }
-     
+        
         // If it ends in operation get another number
-        if checkIfEndsInOp(problem: problem){
+        if checkIfEndsInOp(checkChar: problem.last!){
             print("Ends in a op")
             problem += getRandomNumber()
         }
-
+        
+        
         print("Problem: \(problem)")
+        return problem
         
     }
+
     
-    //Gets a random number of characters for problem
-    private func initializeNumberOfChars(){
-        repeat{
-            numberOfChars = Int(arc4random()) % maxNumberOfCharsAndNumber
-        }while numberOfChars == 0 || numberOfChars == 1 || numberOfChars == 2
+    //Gets a random number of characters for problem and returns it
+    private func initializeNumberOfChars() -> Int{
+        var numberOfChars: Int?
         
-        print("Number of Characters: \(numberOfChars)")
+        repeat{
+            //Get a number between 0 and maxNumberOfCharsAndNumber
+            numberOfChars = Int(arc4random()) % maxNumberOfCharsAndNumber
+            
+            //numCharsNeeded is the number of characters needed for a problem ie. 2 + 3
+        }while numberOfChars! < numCharsNeeded
+        
+        
+//        print("Number of Characters: \(numberOfChars)")
+        return numberOfChars!
     }
     
     //Gets random number and converts it to string
     private func getRandomNumber()->String{
         let randomNumber = Int(arc4random()) % maxNumberOfCharsAndNumber
-        print(randomNumber)
+//        print(randomNumber)
         return String(randomNumber)
     }
     
     
+    
+    
     //Checks if character in string is a number
     private func checkIfNumber(number: String.Element) -> Bool{
-        //String element so I need to change to string to int :)
+        /*  String element so I need to change to string to int :)
+            If i can typecast to int using optional chaining
+            then it is an int else not
+        */
         if let _: Int = Int(String(number)){
             return true
         }
@@ -73,20 +93,20 @@ class RandomProblemGenerator{
             return false
         }
     }
-    
-//    
+
+  
     //Checks if ends in operation
-    private func checkIfEndsInOp(problem: String) ->Bool{
+    private func checkIfEndsInOp(checkChar: String.Element) ->Bool{
         for indexNumber in 0...mathSymbols.count-1{
-            print("Last char of problem: \(String(describing: problem.last))")
-            print("Math symbols amount:  \(mathSymbols[indexNumber])")
+
             //The r is for the over may have a better way to do this
-            if String(describing: problem.last!) == String(mathSymbols[indexNumber]) && String(describing: problem.last!) != "r" {
-                print("There was a op symbol")
+//            if String(describing: problem.last!) == String(mathSymbols[indexNumber]) && String(describing: problem.last!) != "r" {
+            if checkChar == mathSymbols[indexNumber] || checkChar == "r"{
+//                print("There was a op symbol")
                 return true
             }
         }
-        print("Doesn't end in op symbol")
+//        print("Doesn't end in op symbol")
         return false
     }
     

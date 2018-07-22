@@ -15,19 +15,22 @@ protocol AnswerProtocol {
 }
 class Answer{
     
-    private let baseUrl: String = "https://newton.now.sh"
+    private let baseUrl: String = "https://newton.now.sh/simplify/"
     private var answer: String = ""
     
     //To pass the answer and problem over once network call is terminated
     var delegate: AnswerProtocol?
     
     init(problem: String){
-        makeAnswerRequest(problem: problem)
+        makeAnswerRequest(with: problem)
     }
     
-    private func makeAnswerRequest(problem: String){
+    private func makeAnswerRequest(with problem: String){
         
-        let newURL: String = baseUrl + "/simplify" + "/" + problem
+        /* ie. "https://newton.now.sh/simplify/2+3" */
+        let newURL: String = baseUrl + problem
+        
+        //Make the request to the url
         Alamofire.request(newURL).responseJSON { response in
             print("Sending request to: \(newURL)")
             print("Response result: \(response.result)")
@@ -37,7 +40,7 @@ class Answer{
                 self.parseJsonAnswer(json: json)
             }
             else{
-                print("Error: \(String(describing: response.error))")
+                print("Error: \(response.error!)")
             }
         }
     }
@@ -45,9 +48,17 @@ class Answer{
     private func parseJsonAnswer(json: JSON){
         if let answer = json["result"].string{
             
-            //Confusing line but pretty much get rid of white space and replace overs with a slash
-            delegate?.getAnswerProblem(mathAnswer: answer.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "over", with: "/") )
-            print("Answer: \(answer.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "over", with: "/"))")
+            /*
+                Confusing line but pretty much get rid of white space and replace overs with a slash
+                Yeah bro only if I have division problems configured so for now
+                the raw answer will be passed
+             
+                //delegate?.getAnswerProblem(mathAnswer: answer.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "over", with: "/") )
+            */
+            
+            delegate?.getAnswerProblem(mathAnswer: answer);
+            //print("Answer: \(answer.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "over", with: "/"))")
+            print("Answer: " + answer)
         }
         else{
             print("Error no answer")
