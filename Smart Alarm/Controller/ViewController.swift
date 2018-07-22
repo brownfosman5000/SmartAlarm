@@ -79,7 +79,7 @@ class ViewController: UIViewController,UNUserNotificationCenterDelegate {
     
     //Set the content
     func setContentForNotifications(content: UNMutableNotificationContent){
-        content.title = NSString.localizedUserNotificationString(forKey: "Math Time: Get yo ass up Nigga", arguments: nil)
+        content.title = NSString.localizedUserNotificationString(forKey: "Math Time: ", arguments: nil)
         content.body = NSString.localizedUserNotificationString(forKey: "You have 5 problems to complete..", arguments: nil)
         content.sound = UNNotificationSound(named: "OriginalAlarm.wav")
     }
